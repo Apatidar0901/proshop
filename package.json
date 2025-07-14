@@ -1,0 +1,31 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "eCommerce app built with the MERN stack",
+  "homepage": "https://github.com/Apatidar0901/proshop#readme",
+  "bugs": {
+    "url": "https://github.com/Apatidar0901/proshop/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apatidar0901/proshop.git"
+  },
+  "license": "MIT",
+  "author": "Abhishek Patidar",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "dotenv": "^17.2.0",
+    "nodemon": "^3.1.10"
+  }
+}
