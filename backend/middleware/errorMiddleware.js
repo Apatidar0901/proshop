@@ -3,22 +3,16 @@ const notFound = (req, res, next) => {
   res.status(404);
   next(error);
 };
+
 const errorHandler = (err, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = err.message;
-  res.status(statusCode);
-  res.json({
-    message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
-  });
-  // check for Mongoose bad ObjectID
-  if (err.Name === "CastError" && err.kind === "ObjectId") {
-    message = "Resource not found";
-    statusCode = 404;
-  }
+
+  // NOTE: checking for invalid ObjectId moved to it's own middleware
+  // See README for further info.
 
   res.status(statusCode).json({
-    message,
+    message: message,
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });
 };
