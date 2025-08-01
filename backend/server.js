@@ -48,6 +48,13 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
+// DEBUG: Print all registered route paths
+app._router.stack
+  .filter((r) => r.route)
+  .forEach((r) =>
+    console.log(`📍 [ROUTE] ${Object.keys(r.route.methods)} ${r.route.path}`)
+  );
+
 app.listen(port, () =>
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
 );
