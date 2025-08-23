@@ -39,7 +39,8 @@ if (process.env.NODE_ENV === "production") {
   app.use("/uploads", express.static("/var/data/uploads"));
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-  app.get("*", (req, res) =>
+  // Express 5 compatible catch-all
+  app.get("{*splat}", (req, res) =>
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
   console.log(" Production static routes set");
