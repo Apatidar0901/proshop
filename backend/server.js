@@ -57,7 +57,7 @@ app.use(errorHandler);
 
 // ✅ Safely list all registered routes
 console.log(" Listing all registered routes:");
-console.table(listEndpoints(app));
+//console.table(listEndpoints(app));
 
 app.listen(port, () =>
   console.log(` Server running in ${process.env.NODE_ENV} mode on port ${port}`)
